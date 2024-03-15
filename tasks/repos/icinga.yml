@@ -1,0 +1,6 @@
+---
+- name: installing RHEL 7 ICINGA repo
+  yum: name=https://packages.icinga.org/epel/7/release/noarch/icinga-rpm-release-7-1.el7.centos.noarch.rpm state=present update_cache=yes
+
+- name: updating yum
+  yum: name=* state=latest

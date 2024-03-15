@@ -1,0 +1,7 @@
+---
+- name: deploying ssh key for administrative user
+  authorized_key: user={{ item.name }} key="{{ item.key }}"
+  with_items:
+  - name: ansible
+    key: "{{ lookup('file', '../files/public-keys/ansible-do.pub') }}"
+  no_log: true      

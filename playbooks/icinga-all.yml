@@ -1,0 +1,20 @@
+---
+- name: building core requirements
+  hosts: icinga*
+  remote_user: root
+  roles:
+  - core
+
+- name: crafting up icinga masters
+  hosts: icinga-master*
+  remote_user: ansible
+  become: yes
+  roles:
+  - icinga-masters
+
+- name: crafting up icinga nodes
+  hosts: icinga-node*
+  remote_user: ansible
+  become: yes
+  roles:
+  - icinga-nodes

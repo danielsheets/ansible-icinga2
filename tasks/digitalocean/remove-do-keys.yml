@@ -1,0 +1,9 @@
+---
+- name: removing ansible user ssh-key from digitalocean
+  digital_ocean: >
+    state=absent
+    command=ssh
+    name=ansible-do
+    ssh_pub_key={{ lookup('file', '../files/public-keys/ansible-do.pub') }}
+    api_token={{ do_token }}
+  register: ansible_do

@@ -1,0 +1,28 @@
+---
+# Ansible mysql_secure_installation playbook
+
+- name: ensure python-mysqldb package is present
+  yum: name=MySQL-python state=present
+
+- name: delete anonymous MySQL user
+  action: mysql_user user="" state=absent
+
+- name: delete MySQL test database
+  action: mysql_db db=test state=absent
+
+- name: change root user password on first run
+  mysql_user: login_user=root
+                login_password=""
+                name=root
+                password=icingaweb2
+                priv=*.*:ALL,GRANT
+                host={{ item }}
+
+  with_items:
+     - 127.0.0.1
+     - ::1
+     - localhost
+
+## 
+# Run with 
+#   --extra-vars "mysql_root_password=<your password>" 

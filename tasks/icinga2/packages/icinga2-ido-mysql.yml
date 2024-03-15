@@ -1,0 +1,8 @@
+---
+- name: installing the ido-mysql plugin
+  yum: name={{item}} state=installed
+  with_items:
+        - icinga2-ido-mysql
+- name: restarting icinga2
+  service: name=icinga2 
+           state=restarted

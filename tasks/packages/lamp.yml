@@ -1,0 +1,17 @@
+---
+- name: installing Apache, PHP, and mariadb
+  yum: name={{item}} state=latest
+  with_items:
+     - httpd
+     - mariadb
+     - mariadb-server
+     - php
+     - php-mysql
+     - php-ldap
+     - php-pgsql
+
+- name: starting and enabling httpd
+  service: name=httpd state=started enabled=yes
+  
+- name: starting and enabling mariadb
+  service: name=mariadb state=started enabled=yes

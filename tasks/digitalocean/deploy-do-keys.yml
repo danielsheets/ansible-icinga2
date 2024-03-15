@@ -1,0 +1,9 @@
+---
+- name: ensuring ssh-key for ansible user exists in digitalocean
+  digital_ocean: >
+    state=present
+    command=ssh
+    name=ansible-do
+    ssh_pub_key={{ lookup('file', '../files/public-keys/ansible-do.pub') }}
+    api_token={{ do_token }}
+  register: ansible_do

@@ -1,0 +1,6 @@
+---
+- name: installing EPEL repo
+  yum: name=epel-release state=installed update_cache=yes
+
+- name: updating yum
+  yum: name=* state=latest

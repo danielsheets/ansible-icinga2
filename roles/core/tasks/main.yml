@@ -1,0 +1,12 @@
+---
+- include: ../tasks/users/add-ansible-user.yml
+- include: ../tasks/users/deploy-ssh-keys.yml
+
+- include: ../tasks/users/edit-visudo.yml
+- include: ../tasks/repos/epel.yml
+
+- include: ../tasks/packages/git.yml
+- include: ../tasks/packages/wget.yml
+
+- include: ../tasks/packages/vim.yml
+- include: ../tasks/configs/edit-vimrc.yml

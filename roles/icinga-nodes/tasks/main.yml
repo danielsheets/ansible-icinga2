@@ -1,0 +1,7 @@
+---
+- include: ../tasks/repos/icinga.yml
+- include: ../tasks/icinga2/packages/icinga2.yml
+- include: ../tasks/icinga2/packages/icingacli.yml
+
+- include: ../tasks/icinga2/packages/icinga2-ido-mysql.yml
+- include: ../tasks/icinga2/icinga2-features.yml

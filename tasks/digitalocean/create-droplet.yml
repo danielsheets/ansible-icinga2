@@ -1,0 +1,15 @@
+---
+- name: Creating DigitalOcean Droplets (as defined in vars/droplet-details.yml)
+  digital_ocean: >
+    state=present
+    command=droplet
+    wait=no
+    name="{{ item.name }}"
+    unique_name=yes
+    size_id="{{ item.size }}"
+    region_id={{ region }}
+    image_id={{ image }}
+    ssh_key_ids="{{ ansible_do.ssh_key.id }}"
+    api_token="{{ do_token }}"
+  with_items: 
+  - "{{ droplets }}"

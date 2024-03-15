@@ -1,0 +1,16 @@
+---
+
+- name: updating /etc/vimrc
+  lineinfile: dest=/etc/vimrc
+              state=present
+              backup=yes
+              insertafter=EOF
+              line={{ item.line }}
+  with_items:
+     - { line: 'set number' }
+     - { line: 'color elflord' }
+     - { line: 'set tabstop=4' }
+     - { line: 'set shiftwidth=4' }
+     - { line: 'set softtabstop=4' }
+     - { line: 'set expandtab' }
+     - { line: 'set autoindent' }

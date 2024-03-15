@@ -1,0 +1,7 @@
+---
+- hosts: digitalocean
+
+  tasks:
+  - include_vars: ../vars/droplet-details.yml
+  - include: ../tasks/digitalocean/deploy-do-keys.yml
+  - include: ../tasks/digitalocean/create-droplet.yml

@@ -1,0 +1,14 @@
+---
+- name: destroying droplets
+  digital_ocean: >
+    state=absent
+    command=droplet
+    name="{{ item.name }}"
+    unique_name=yes
+    size_id="{{ item.size }}"
+    region_id=nyc3
+    image_id=centos-7-2-x64
+    ssh_key_ids="{{ ansible_do.ssh_key.id }}"
+    api_token="{{ do_token }}"
+  with_items: 
+    - "{{ droplets }}"

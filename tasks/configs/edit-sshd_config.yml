@@ -1,0 +1,22 @@
+---
+
+- name: updating /etc/ssh/sshd_config
+  lineinfile: dest=/etc/ssh/sshd_config
+              state=present
+              backup=yes
+              insertafter=EOF
+              line={{ item.line }}
+  with_items:
+     - { line: 'PermitRootLogin no' }
+     - { line: 'RSAAuthentication yes' }
+     - { line: 'PubkeyAuthentication yes' }
+     - { line: 'PermitEmptyPasswords no' }
+     - { line: 'PasswordAuthentication no' }
+
+- name: removing commented password auth line
+  lineinfile: dest=/etc/ssh/sshd_config
+              state=absent
+              line={{ item.line }}
+  with_items:
+     - { line: '#PasswordAuthentication yes' }
+     - { line: 'PasswordAuthentication yes' }

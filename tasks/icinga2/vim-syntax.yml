@@ -1,0 +1,14 @@
+---
+
+- name: creating syntax and ftdetect directories
+  file: path={{ item }} state=directory
+  with_items:
+     - '/root/.vim'
+     - '/root/.vim/syntax'
+     - '/root/.vim/ftdetect'
+
+- name: copying icinga2 vim files
+  copy: src={{ item.src }} dest={{ item.dest }}
+  with_items:
+     - { src: '../files/icinga-syntax/syntax/icinga2.vim', dest: '/root/.vim/syntax/icinga2.vim' }
+     - { src: '../files/icinga-syntax/ftdetect/icinga2.vim', dest: '/root/.vim/ftdetect/icinga2.vim' }

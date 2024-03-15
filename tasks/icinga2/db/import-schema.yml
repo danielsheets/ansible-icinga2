@@ -1,0 +1,12 @@
+---
+
+- name: copy icinga2 database schema
+  copy: remote_src=true 
+        src=/usr/share/icinga2-ido-mysql/schema/mysql.sql dest=/tmp/
+  
+- name: import database schema
+  mysql_db: login_user=root
+            login_password="icingaweb2"
+            name=icinga
+            state=import
+            target=/tmp/mysql.sql

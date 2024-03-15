@@ -1,0 +1,10 @@
+---
+do_token: YOUR-API-TOKEN-HERE
+
+droplets:
+  - { name: "icinga-master1", size: "1gb" }
+  - { name: "icinga-node1", size: "512mb" }
+
+image: centos-7-2-x64
+
+region: nyc3

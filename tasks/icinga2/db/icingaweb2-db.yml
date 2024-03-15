@@ -1,0 +1,15 @@
+---
+
+- name: creating icingaweb2 database
+  mysql_db: login_user=root
+            login_password=icingaweb2
+            name=icinga
+            state=present
+  
+- name: creating icingaweb2 user  
+  mysql_user: login_user=root
+              login_password=icingaweb2
+              name=icinga
+              password=icinga
+              priv="icinga.*:SELECT,INSERT,UPDATE,DELETE,DROP,CREATE VIEW,INDEX,EXECUTE" state=present
+

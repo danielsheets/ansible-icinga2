@@ -1,0 +1,6 @@
+---
+- name: adding management users
+  user: name=dsheets 
+        state=present 
+        shell=/bin/bash 
+        groups=wheel append=yes

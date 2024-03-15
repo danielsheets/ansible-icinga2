@@ -1,0 +1,20 @@
+---
+
+- name: installing icingaweb2 packages
+  yum: name={{item}} state=latest
+  with_items:
+    - icingaweb2
+    - icingacli
+    - icinga2-ido-mysql
+
+- name: give apache permissions to use icingaweb2
+  command: usermod -a -G icingaweb2 apache
+
+- name: restarting apache
+  service: name=httpd state=restarted
+
+- name: show setup token for icingaweb2
+  command: icingacli setup token create
+  register: token
+- debug: msg="{{ token.stdout }} "
+- pause: seconds=15 prompt="Copy the setup token now"

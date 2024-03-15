@@ -1,0 +1,11 @@
+---
+
+- name: install icinga2 and nagios plugins
+  yum: name={{item}} state=latest
+  with_items:
+        - icinga2
+        - nagios-plugins-all
+- name: start and enable icinga2
+  service: name=icinga2 
+           state=started 
+           enabled=true

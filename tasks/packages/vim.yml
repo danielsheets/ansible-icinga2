@@ -1,0 +1,4 @@
+---
+
+- name: install vim-enhanced
+  yum: name=vim-enhanced state=latest

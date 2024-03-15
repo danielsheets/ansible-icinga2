@@ -1,0 +1,9 @@
+---
+- name: enable ido-mysql feature
+  command: icinga2 feature enable ido-mysql
+
+- name: enable icinga2 command
+  command: icinga2 feature enable command
+
+- name: restart icinga2
+  service: name=icinga2 state=restarted

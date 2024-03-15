@@ -1,0 +1,12 @@
+---
+
+- name: fix timezone in php.ini
+  lineinfile: dest=/etc/php.ini
+              state=present
+              backup=yes
+              regexp="^[#|;]?date.timezone ="
+              insertafter="^[#|;]?date.timezone ="
+              line="date.timezone = America/New_York"
+              
+- name: restart httpd
+  service: name=httpd state=restarted
